@@ -410,7 +410,7 @@ void Adafruit_SSD1306::ssd1306_commandList(const uint8_t *c, uint16_t n, uint8_t
       memcpy(&data[1], (uint8_t *)(c + WIRE_MAX * i), min + 1);
       if (wire->Write(i2caddr, data, min + 1) == false)
       {
-        printf("FAILED WRITING!!!!!!!!!!!!!!!!!!!!\n");
+        //printf("FAILED WRITING!!!!!!!!!!!!!!!!!!!!\n");
       }
     }
   }

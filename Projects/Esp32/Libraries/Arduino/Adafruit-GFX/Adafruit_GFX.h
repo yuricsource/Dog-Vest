@@ -12,6 +12,9 @@
 #include "../ArduinoPort/WProgram.h"
 #endif
 #include "gfxfont.h"
+#include <array>
+#include "string.h"
+#include "stdarg.h"
 
 /// A generic graphics superclass that can handle all sorts of drawing. At a
 /// minimum you can subclass and provide drawPixel(). At a maximum you can do a
@@ -174,8 +177,30 @@ public:
   /**********************************************************************/
   void cp437(boolean x = true) { _cp437 = x; }
 
-  // using Print::write;
   size_t write(uint8_t);
+
+  void print(const char *const format, ...)
+  {
+    //std::array<char> temp[63];
+    std::array<char, 63> temp;
+    auto length = std::size_t {63};
+    va_list args;
+    while (temp.size() <= length)
+    {
+      va_start(args, format);
+      const auto status = std::vsnprintf(temp.data(), temp.size(), format, args);
+      va_end(args);
+      if (status < 0)
+        throw std::runtime_error {"string formatting error"};
+      length = static_cast<std::size_t>(status);
+    }
+
+    for(uint8_t i = 0; i < length; i ++)
+    {
+      write(temp.data()[i]);
+    }
+    //return std::string {temp.data(), length};
+  }
 
   /************************************************************************/
   /*!

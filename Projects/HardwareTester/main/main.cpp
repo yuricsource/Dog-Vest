@@ -18,6 +18,7 @@
 #include "Tests.h"
 #include "Rng.h"
 #include <cstring>
+#include "esp_bt.h"
 
 #include "Adafruit_GFX.h"
 #include "Adafruit_SSD1306.h"
@@ -108,23 +109,27 @@ extern "C" void app_main(void)
 	Hal::Hardware::Instance()->GetDisplay().write(' ');
 	Hal::Hardware::Instance()->GetDisplay().write(' ');
 	Hal::Hardware::Instance()->GetDisplay().write(' ');
-	Hal::Hardware::Instance()->GetDisplay().write('H');
+	Hal::Hardware::Instance()->GetDisplay().write('L');
+	Hal::Hardware::Instance()->GetDisplay().write('u');
+	Hal::Hardware::Instance()->GetDisplay().write('n');
 	Hal::Hardware::Instance()->GetDisplay().write('a');
-	Hal::Hardware::Instance()->GetDisplay().write('r');
-	Hal::Hardware::Instance()->GetDisplay().write('d');
-	Hal::Hardware::Instance()->GetDisplay().write('w');
-	Hal::Hardware::Instance()->GetDisplay().write('a');
-	Hal::Hardware::Instance()->GetDisplay().write('r');
-	Hal::Hardware::Instance()->GetDisplay().write('e');
+	Hal::Hardware::Instance()->GetDisplay().write('\'');
+	Hal::Hardware::Instance()->GetDisplay().write('s');
 	Hal::Hardware::Instance()->GetDisplay().write(' ');
-	Hal::Hardware::Instance()->GetDisplay().write('T');
+	Hal::Hardware::Instance()->GetDisplay().write('V');
 	Hal::Hardware::Instance()->GetDisplay().write('e');
 	Hal::Hardware::Instance()->GetDisplay().write('s');
 	Hal::Hardware::Instance()->GetDisplay().write('t');
-	Hal::Hardware::Instance()->GetDisplay().write('e');
-	Hal::Hardware::Instance()->GetDisplay().write('r');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
+	Hal::Hardware::Instance()->GetDisplay().write(' ');
 	Hal::Hardware::Instance()->GetDisplay().display();
 	
+TestLed();
+
 	while (1)
 	{
 		executetMenu(test);

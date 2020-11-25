@@ -146,6 +146,7 @@ public:
   void ssd1306_command(uint8_t c);
   bool getPixel(int16_t x, int16_t y);
   uint8_t *getBuffer(void);
+  
 
 private:
   inline void SPIwrite(uint8_t d) __attribute__((always_inline));
